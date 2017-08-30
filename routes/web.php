@@ -21,3 +21,8 @@ Route::get('/a', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin', 'as'=>'backend.' ,'middleware' => 'auth','role:admin'], function()
+{
+   Route::resource('/trans/barang','BarangController');
+   Route::resource('/users/role','BarangController');
+});
